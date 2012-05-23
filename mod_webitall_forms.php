@@ -17,11 +17,11 @@ $db			=& JFactory::getDBO();
 	$db->setQuery($Formquery);
 	$form = $db->loadObject();
 	
-	
 	$Fieldsquery = "SELECT * FROM #__webitall_forms_fields WHERE form_id = '$FormID'";
 	$db->setQuery($Fieldsquery);
 	$fields = $db->loadObjectlist();
 		
-$generatedform 	= Webitall_formsHelper::GenerateForm($form->email_html, $fields);
+$generatedform 	= Webitall_formsHelper::GenerateForm($form, $fields);
+
 
 require JModuleHelper::getLayoutPath('mod_webitall_forms');

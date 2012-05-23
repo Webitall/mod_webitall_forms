@@ -22,6 +22,9 @@ if($form->form_placeholder){
 <input type="hidden" name="option" value="com_webitall_forms">
 <input type="hidden" name="formid" value="<?php echo $FormID;?>">
 <input type="hidden" name="Itemid" value="<?php echo $Itemid;?>">
+<? if($form->form_url){ ?>
+	<input type="hidden" name="wform[url]" value="<? echo JURI::base();?>">
+<? } ?>
 <?php echo JHtml::_('form.token'); ?>
 </form>
 <?
