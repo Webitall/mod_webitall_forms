@@ -11,6 +11,9 @@
 defined('_JEXEC') or die;
 JHtml::_('behavior.keepalive'); 
 JHTML::_('behavior.formvalidation');
+if($form->form_placeholder){
+	JHTML::_('behavior.mootools');
+}
 ?>
 <form action="<?php echo JRoute::_('index.php', true); ?>" method="post" id="subscribe-form" class="form-validate" onSubmit="return myValidate(this);">
 <?php echo $generatedform; ?>
@@ -21,3 +24,22 @@ JHTML::_('behavior.formvalidation');
 <input type="hidden" name="Itemid" value="<?php echo $Itemid;?>">
 <?php echo JHtml::_('form.token'); ?>
 </form>
+<?
+if($form->form_placeholder){ ?>
+<script>
+window.addEvent('domready', function() {
+	var wFields=new Array();
+	
+	$$('.placeholder').addEvent('click', function(){
+		wFields[this.get('name')] = this.get('value');
+		this.set('value', '');
+		
+	});
+	$$('.placeholder').addEvent('mouseleave', function(){
+		if(!this.get('value')){
+			this.set('value', wFields[this.get('name')]);
+		}
+	});
+});
+</script>
+<? } ?>
