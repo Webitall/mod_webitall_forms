@@ -29,7 +29,12 @@
 	<config>
 		<fields name="params">
 			<fieldset name="basic">
-				<field name="form_id" type="sql" default="10" label="COM_WEBITALL_FORMS_SELECTFORM" query="SELECT id, name FROM #__webitall_forms" key_field="id" value_field="name" />
+				<field name="form_id" type="sql" default="10" label="MOD_WEBITALL_FORMS_SELECTFORM" query="SELECT id, name FROM #__webitall_forms" key_field="id" value_field="name" />
+				<field name="modal" type="list" default="0" label="MOD_WEBITALL_FORMS_MODAL" >
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="modaltext" type="text" default="" label="MOD_WEBITALL_FORMS_MODALTEXT" />
 			</fieldset>
 			<fieldset
 				name="advanced">

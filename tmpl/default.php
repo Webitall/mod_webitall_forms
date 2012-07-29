@@ -14,6 +14,15 @@ JHTML::_('behavior.formvalidation');
 if($form->form_placeholder){
 	JHTML::_('behavior.mootools');
 }
+
+
+if($params->get('modal')){
+	JHTML::_('behavior.modal');
+	$ModalLink = JRoute::_('index.php?option=com_webitall_forms&view=form&tmpl=component&id='.$FormID);
+?>
+	<a href="<? echo $ModalLink; ?>" rel="{handler: 'iframe', size: {x: 550, y: 300}}" class="modal"><? echo $params->get('modaltext');?></a>
+<?
+}else{
 ?>
 <form action="<?php echo JRoute::_('index.php', true); ?>" method="post" id="subscribe-form" class="form-validate" onSubmit="return myValidate(this);">
 <?php echo $generatedform; ?>
@@ -46,3 +55,6 @@ window.addEvent('domready', function() {
 });
 </script>
 <? } ?>
+<?
+}
+?>
